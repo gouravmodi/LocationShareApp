@@ -2,7 +2,7 @@
 <div id="map" class="map"></div>
 <div id="popup" class="ol-popup">
   <%= form_tag 'locations', name: 'share-location', class: 'form' do %>
-    <%= select_tag 'user_ids[]', options_for_select(User.all.collect{ |u| [u.name, u.id] }), :multiple => true,
+    <%= select_tag 'user_ids[]', options_for_select(@users.collect{ |u| [u.name, u.id] }), :multiple => true,
     :prompt => "-- Share Public --", class: 'form-control' %>
      <%= button_tag 'Share', class: 'share-btn btn btn-success btn-sm' %>
   <% end %>

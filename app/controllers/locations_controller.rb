@@ -1,5 +1,6 @@
 class LocationsController < ApplicationController
-  def index                                  
+  def index     
+    @users = User.select(:id, :name).where("id != ?", current_user.id)                             
   end
 
   def public_locations
