@@ -5,6 +5,9 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find_by_username(params[:username])
+    if !@user
+      render :not_found
+    end
   end
 
   def locations
@@ -15,7 +18,7 @@ class UsersController < ApplicationController
                                   .where("shared_locations.shared_by_id = #{@user.id} AND shared_locations.shared_with_id IS NULL")
       render json: {success: true, locations: public_locations}
     else
-
+      render json: {success: false, message: 'User Not found'}
     end
   end
 end

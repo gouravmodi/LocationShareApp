@@ -1,4 +1,6 @@
-Showing publicly shared locations for <% @user.name %>
+<div class="container">
+  Showing publicly shared locations for <%= @user.name %>
 
-<div id="map" class="map"></div>
-<%= hidden_field_tag 'user_id', @user.id %>
+  <div id="map" class="map"></div>
+  <%= hidden_field_tag 'user_id', @user.id %>
+</div>

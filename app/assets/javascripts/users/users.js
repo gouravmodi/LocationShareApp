@@ -7,7 +7,7 @@ $(".users-show").ready(function() {
       })
     ],
     view: new ol.View({
-      center: ol.proj.fromLonLat([37.41, 8.82]),
+      center: ol.proj.fromLonLat([79.088860, 21.146633]),
       zoom: 4
     })
   });

@@ -12,12 +12,13 @@ class LocationsController < ApplicationController
       locations_shared_by_me: locations_shared_by_me,
       locations_shared_with_me: locations_shared_with_me
     }
+  rescue Exception => e
+    render json: {success: false, message: e.message}
   end
 
   def create
     @location = Location.new(location_params)
-    user_ids = params[:user_ids] || [nil]
-    if @location.save
+    if @location.save!
       if params[:user_ids]
         params[:user_ids].each do |user_id|
           SharedLocation.create(
@@ -33,6 +34,7 @@ class LocationsController < ApplicationController
         )
       end
     end
+    flash[:notice] = "Location Shared successfully"
     redirect_to locations_path
   rescue Exception => e
     render json: {success: false, message: e.message}
