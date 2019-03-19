@@ -39,3 +39,19 @@ function addMapPoint(map, lat, lng, color) {
 
   map.addLayer(vectorLayer);
 }
+
+function createMap() {
+  var map = new ol.Map({
+    target: 'map',
+    layers: [
+      new ol.layer.Tile({
+        source: new ol.source.OSM()
+      })
+    ],
+    view: new ol.View({
+      center: ol.proj.fromLonLat([79.088860, 21.146633]),
+      zoom: 4
+    })
+  });
+  return map;
+}
